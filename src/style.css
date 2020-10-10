@@ -1,0 +1,12 @@
+/* General styling */
+:root {
+    --header-color: blue;
+    --text-color: white;
+}
+
+header {
+    background-color: var(--header-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+}
