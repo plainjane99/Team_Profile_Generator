@@ -80,11 +80,11 @@ promptUser()
     })
     
     // pass html code to writeFile
-    .then(pageHTML => {
-        return msWriteProfilerMark(pageHTML);
-    })
+    // .then(pageHTML => {
+    //     return msWriteProfilerMark(pageHTML);
+    // })
 
-    .catch(err => {
-        console.log(err);
-    })
+    // .catch(err => {
+    //     console.log(err);
+    // })
 ;
