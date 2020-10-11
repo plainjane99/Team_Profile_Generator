@@ -79,9 +79,6 @@ const promptUser = () => {
             // adds the manager role to the object
             teamManager.role = teamManager.getRole();
             return teamManager;
-            // passes object to html generation
-        //     const pageHTML = generatePage(teamManager);
-        //     console.log(pageHTML);
         })
     
     ;
@@ -113,7 +110,6 @@ const promptEngineer = (teamData) => {
     ;
     engineerQuestions.push(gitHubQuestion);
 
-
     // prompts for input then adds it to the teamData object
     return inquirer.prompt(engineerQuestions)
         .then(engineerData => {
@@ -124,6 +120,8 @@ const promptEngineer = (teamData) => {
 
             teamData.employees.push(engineer);
             return promptTeam(teamData);
+
+
         })
     ;
 };
@@ -152,8 +150,15 @@ const promptTeam = teamData => {
 
             if (employeeType === 'Engineer') {
                 promptEngineer(teamData);
+            } 
+            else if (employeeType === 'Intern') {
+                promptIntern(teamData);
             }
-
+            else {
+                // passes object to html generation
+                const pageHTML = generatePage(teamData);
+                console.log(pageHTML);
+            }
         })
     ;
 };
