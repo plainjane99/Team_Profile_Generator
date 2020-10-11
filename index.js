@@ -73,6 +73,8 @@ const promptUser = () => {
     
     ;
 };
+
+// function that prompts the user for employee data
 // each employee (manager, engineer, intern) gets pushed into the array
 // when finished choosing employees, that's when we would call the function to write the page
 // function receives team members as parameters 

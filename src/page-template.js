@@ -19,8 +19,6 @@ const generateManager = (fullname, id, email, phone) => {
     `
 }
 
-
-
 // generate page html
 module.exports = templateData => {
 
