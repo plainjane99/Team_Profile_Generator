@@ -65,9 +65,12 @@ const promptUser = () => {
             }
         ])
         .then(managerData => {
-            const manager = new Manager(managerData.fullname, managerData.id, managerData.email, managerData.phone);
-            console.log(manager);
-            const pageHTML = generatePage(manager);
+            // constructs new instance of manager
+            const teamManager = new Manager(managerData.fullname, managerData.id, managerData.email, managerData.phone);
+            // adds the manager role to the object
+            teamManager.role = teamManager.getRole();
+            // passes object to html generation
+            const pageHTML = generatePage(teamManager);
             console.log(pageHTML);
         })
     

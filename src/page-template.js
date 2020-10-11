@@ -1,5 +1,5 @@
 // generate manager html
-const generateManager = (fullname, id, email, phone) => {
+const generateManager = (fullname, id, email, phone, role) => {
 
     return `
     <!--Row 1 is Manager row-->
@@ -7,7 +7,7 @@ const generateManager = (fullname, id, email, phone) => {
         <div class="card card-wrapper">
             <div class="card-divider card-header">
                 <h4>${fullname}</h4>
-                <h5>Manager</h5>
+                <h5>${role}</h5>
             </div>
             <div class="card-section">
                 <h6>Employee ID: ${id}</h6>
@@ -22,7 +22,7 @@ const generateManager = (fullname, id, email, phone) => {
 // generate page html
 module.exports = templateData => {
 
-    const { fullname, id, email, phone } = templateData;
+    const { fullname, id, email, phone, role } = templateData;
 
     return `
         <!DOCTYPE html>
@@ -46,7 +46,7 @@ module.exports = templateData => {
                 <main>
                     <!--Foundation grid for 2-row layout-->
                     <div class="grid-x container">
-                    ${generateManager(fullname, id, email, phone)}
+                    ${generateManager(fullname, id, email, phone, role)}
                     </div>
                 </main>
         
