@@ -49,27 +49,61 @@ const questions = [
     },
 ];
 
+const phoneQuestion = 
+{
+    type: 'input',
+    name: 'phone',
+    message: "Please enter office phone number.",
+    validate: phoneInput => {
+        if (phoneInput) {
+            return true;
+        } else {
+            console.log("Please enter a phone number.");
+            return false;
+        }
+    }
+};
+
+const gitHubQuestion = 
+{
+    type: 'input',
+    name: 'gitHub',
+    message: "Please enter employee's GitHub name.",
+    validate: gitHubInput => {
+        if (gitHubInput) {
+            return true;
+        } else {
+            console.log("Please enter a GitHub name.");
+            return false;
+        }
+    }
+};
+
+const managerQuestions = [...questions, phoneQuestion];
+const engineerQuestions = [...questions, gitHubQuestion];
+
+
 // function that starts the application
 // prompts the user for manager data
 const promptUser = () => {
     // adds manager-specific question to questions array
-    const managerQuestions = [...questions];
-    const phoneQuestion = 
-        {
-            type: 'input',
-            name: 'phone',
-            message: "Please enter office phone number.",
-            validate: phoneInput => {
-                if (phoneInput) {
-                    return true;
-                } else {
-                    console.log("Please enter a phone number.");
-                    return false;
-                }
-            }
-        }
-    ;
-    managerQuestions.push(phoneQuestion);
+    // const managerQuestions = [...questions];
+    // const phoneQuestion = 
+    //     {
+    //         type: 'input',
+    //         name: 'phone',
+    //         message: "Please enter office phone number.",
+    //         validate: phoneInput => {
+    //             if (phoneInput) {
+    //                 return true;
+    //             } else {
+    //                 console.log("Please enter a phone number.");
+    //                 return false;
+    //             }
+    //         }
+    //     }
+    // ;
+    // managerQuestions.push(phoneQuestion);
 
     return inquirer.prompt(managerQuestions)
 
@@ -88,23 +122,23 @@ const promptUser = () => {
 // function that prompts for engineer data
 const promptEngineer = (teamData) => {
     // adds engineer-specific question to questions array
-    const engineerQuestions = [...questions];
-    const gitHubQuestion = 
-        {
-            type: 'input',
-            name: 'gitHub',
-            message: "Please enter employee's GitHub name.",
-            validate: gitHubInput => {
-                if (gitHubInput) {
-                    return true;
-                } else {
-                    console.log("Please enter a GitHub name.");
-                    return false;
-                }
-            }
-        }
-    ;
-    engineerQuestions.push(gitHubQuestion);
+    // const engineerQuestions = [...questions];
+    // const gitHubQuestion = 
+    //     {
+    //         type: 'input',
+    //         name: 'gitHub',
+    //         message: "Please enter employee's GitHub name.",
+    //         validate: gitHubInput => {
+    //             if (gitHubInput) {
+    //                 return true;
+    //             } else {
+    //                 console.log("Please enter a GitHub name.");
+    //                 return false;
+    //             }
+    //         }
+    //     }
+    // ;
+    // engineerQuestions.push(gitHubQuestion);
 
     // prompts for input then adds it to the teamData object
     return inquirer.prompt(engineerQuestions)
@@ -152,7 +186,8 @@ const promptTeam = teamData => {
             else {
                 console.log(choiceData);
                 console.log(teamData);
-                return teamData;
+                // return generatePage(teamData); // this seems to work but i don't know if it generated the page correctly
+                console.log(generatePage(teamData));
             }
         })
     ;
@@ -165,10 +200,10 @@ promptUser()
     // each team member will be pushed into a team member array in a data object
     .then(promptTeam)
     // pass team member data into generatePage function and return html code
-    .then(teamData => {
-        const printHMTL = generatePage(teamData);
-        console.log(printHMTL);
-    })
+    // .then(teamData => {
+    //     const printHMTL = generatePage(teamData);
+    //     console.log(printHMTL);
+    // })
     // pass html code to writeFile
     // .then(pageHTML => {
     //     return msWriteProfilerMark(pageHTML);
