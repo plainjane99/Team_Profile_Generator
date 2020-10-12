@@ -79,15 +79,11 @@ const promptUser = () => {
             // adds the manager role to the object
             teamManager.role = teamManager.getRole();
             return teamManager;
+
         })
     
     ;
 };
-
-// function that prompts the user for employee data
-// each employee (manager, engineer, intern) gets pushed into the array
-// when finished choosing employees, that's when we would call the function to write the page
-// function receives team members as parameters 
 
 // function that prompts for engineer data
 const promptEngineer = (teamData) => {
@@ -120,11 +116,10 @@ const promptEngineer = (teamData) => {
 
             teamData.employees.push(engineer);
             return promptTeam(teamData);
-
-
         })
     ;
 };
+
 
 // function that prompts for team member data
 const promptTeam = teamData => {
@@ -155,9 +150,9 @@ const promptTeam = teamData => {
                 promptIntern(teamData);
             }
             else {
-                // passes object to html generation
-                const pageHTML = generatePage(teamData);
-                console.log(pageHTML);
+                console.log(choiceData);
+                console.log(teamData);
+                return teamData;
             }
         })
     ;
@@ -170,9 +165,10 @@ promptUser()
     // each team member will be pushed into a team member array in a data object
     .then(promptTeam)
     // pass team member data into generatePage function and return html code
-    // .then(teamData => {
-    //     return generatePage(teamData);
-    // })
+    .then(teamData => {
+        const printHMTL = generatePage(teamData);
+        console.log(printHMTL);
+    })
     // pass html code to writeFile
     // .then(pageHTML => {
     //     return msWriteProfilerMark(pageHTML);

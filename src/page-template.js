@@ -5,7 +5,7 @@ const generateManager = (managerData) => {
     <!--Row 1 is Manager row-->
     <div class="cell row-wrapper">
         <div class="card card-wrapper">
-            <div class="card-divider card-header">
+            <div class="card-divider card-header manager">
                 <h4>${managerData.fullname}</h4>
                 <h5>${managerData.role}</h5>
             </div>
@@ -19,10 +19,39 @@ const generateManager = (managerData) => {
     `
 }
 
+const generateEmployees = employeesArray => {
+
+    console.log("the generateEmployees function has received the array: " + employeesArray);
+
+    return `
+        ${employeesArray
+            .filter(({ Engineer }) => Engineer)
+            .map(({ fullname, id, email, gitHub, role }) => {
+                return `
+                    <div class="card card-wrapper">
+                        <div class="card-divider card-header engineer">
+                            <h4>${fullname}</h4>
+                            <h5>${role}</h5>
+                        </div>
+                        <div class="card-section">
+                            <h6>Employee ID: ${id}</h6>
+                            <h6>Email: <a href="mailto:${email}">${email}</a> </h6>
+                            <h6>GitHub: ${gitHub}</h6>
+                        </div>
+                    </div>
+                `;
+            })
+        }
+    `
+}
+
 // generate page html
 module.exports = templateData => {
 
+    console.log(templateData);
     const { employees, ...managerInfo } = templateData;
+    console.log(employees);
+    console.log(managerInfo);
 
     return `
         <!DOCTYPE html>
@@ -46,7 +75,12 @@ module.exports = templateData => {
                 <main>
                     <!--Foundation grid for 2-row layout-->
                     <div class="grid-x container">
-                    ${generateManager(managerInfo)}
+                        ${generateManager(managerInfo)}
+
+                        <!--Row 2 will be Engineer/Intern Row-->
+                        <div class="cell row-wrapper employees">
+                            ${generateEmployees(employees)}
+                        </div>
                     </div>
                 </main>
         
