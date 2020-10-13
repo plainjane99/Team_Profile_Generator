@@ -21,38 +21,44 @@ const generateManager = (managerData) => {
 
 const generateEmployees = employeesArray => {
 
-    console.log(employeesArray);
-
+    // this actually works.  need to figure out how to go through entire array.
     return `
-        ${employeesArray
-            .forEach(engineerObj => 
-                engineerObj.map(({ fullname, id, email, gitHub, role }) => {
-                    return `
-                        <div class="card card-wrapper">
-                            <div class="card-divider card-header engineer">
-                                <h4>${fullname}</h4>
-                                <h5>${role}</h5>
-                            </div>
-                            <div class="card-section">
-                                <h6>Employee ID: ${id}</h6>
-                                <h6>Email: <a href="mailto:${email}">${email}</a> </h6>
-                                <h6>GitHub: ${gitHub}</h6>
-                            </div>
-                        </div>
-                    `;
-                })
-            )
-        }
+        ${employeesArray[0].fullname}
     `
-}
+
+
+
+    // return `
+    //     ${employeesArray
+    //         .filter(({ engineer }) => engineer)
+    //         .map(({ fullname, id, email, gitHub, role }) => {
+    //             return `
+    //                 <div class="card card-wrapper">
+    //                     <div class="card-divider card-header engineer">
+    //                         <h4>${fullname}</h4>
+    //                         <h5>${role}</h5>
+    //                     </div>
+    //                     <div class="card-section">
+    //                         <h6>Employee ID: ${id}</h6>
+    //                         <h6>Email: <a href="mailto:${email}">${email}</a> </h6>
+    //                         <h6>GitHub: ${gitHub}</h6>
+    //                     </div>
+    //                 </div>
+    //             `;
+    //         })
+    //         .join('')
+        
+    //     }
+    // `
+};
 
 // generate page html
 module.exports = templateData => {
 
-    console.log(templateData);
+    // console.log(templateData);
     const { employees, ...managerInfo } = templateData;
-    console.log(employees);
-    console.log(managerInfo);
+    // console.log(employees);
+    // console.log(managerInfo);
 
     return `
         <!DOCTYPE html>
