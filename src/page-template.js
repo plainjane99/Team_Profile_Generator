@@ -44,7 +44,7 @@ const generateEmployees = employeesArray => {
                         <div class="card-section">
                             <h6>Employee ID: ${id}</h6>
                             <h6>Email: <a href="mailto:${email}">${email}</a></h6>
-                            <h6>GitHub: ${gitHub}</h6>
+                            <h6>GitHub: <a target="_blank" href="https://github.com/${gitHub}">${gitHub}</a></h6>
                         </div>
                     </div>
                 `
