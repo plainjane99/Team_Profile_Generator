@@ -12,7 +12,7 @@ const generateManager = (managerData) => {
             <div class="card-section">
                 <h6>Employee ID: ${managerData.id}</h6>
                 <h6>Email: <a href="mailto:${managerData.email}">${managerData.email}</a></h6>
-                <h6>Office Number: ${managerData.phone}</h6>
+                <h6>Office Number: ${managerData.officeNumber}</h6>
             </div>
         </div>
     </div>
@@ -21,35 +21,38 @@ const generateManager = (managerData) => {
 
 const generateEmployees = employeesArray => {
 
-    // this actually works.  need to figure out how to go through entire array.
+    // const engineer = employeesArray.filter(employee => employee.role === 'engineer');
+    // console.log(engineer);
+    // const eachEngineer = engineer.map(({ fullname, id, email, gitHub, role }) => {
+    //     console.log(fullname);
+    //     console.log(id);
+    //     console.log(email);
+    //     console.log(gitHub);
+    //     console.log(role);
+    // });
+
     return `
-        ${employeesArray[0].fullname}
+        ${employeesArray
+            .filter(employee => employee.role === 'engineer')
+            .map(({ fullname, id, email, gitHub, role }) => {
+                return `
+                    <div class="card card-wrapper">
+                        <div class="card-divider card-header engineer">
+                            <h4>${fullname}</h4>
+                            <h5>${role}</h5>
+                        </div>
+                        <div class="card-section">
+                            <h6>Employee ID: ${id}</h6>
+                            <h6>Email: <a href="mailto:${email}">${email}</a></h6>
+                            <h6>GitHub: ${gitHub}</h6>
+                        </div>
+                    </div>
+                `
+            })
+            .join('')
+        }
+
     `
-
-
-
-    // return `
-    //     ${employeesArray
-    //         .filter(({ engineer }) => engineer)
-    //         .map(({ fullname, id, email, gitHub, role }) => {
-    //             return `
-    //                 <div class="card card-wrapper">
-    //                     <div class="card-divider card-header engineer">
-    //                         <h4>${fullname}</h4>
-    //                         <h5>${role}</h5>
-    //                     </div>
-    //                     <div class="card-section">
-    //                         <h6>Employee ID: ${id}</h6>
-    //                         <h6>Email: <a href="mailto:${email}">${email}</a> </h6>
-    //                         <h6>GitHub: ${gitHub}</h6>
-    //                     </div>
-    //                 </div>
-    //             `;
-    //         })
-    //         .join('')
-        
-    //     }
-    // `
 };
 
 // generate page html
