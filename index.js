@@ -187,6 +187,7 @@ const promptTeam = teamData => {
             else {
                 console.log(choiceData);
                 console.log(teamData);
+                console.log("Team Profile is being generated.");
                 // return generatePage(teamData); // this seems to work but i don't know if it generated the page correctly
                 console.log(generatePage(teamData));
             }

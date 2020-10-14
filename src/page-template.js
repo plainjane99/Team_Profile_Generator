@@ -1,3 +1,5 @@
+// this js file generates the html for each employee
+
 // generate manager html
 const generateManager = (managerData) => {
 
@@ -19,6 +21,7 @@ const generateManager = (managerData) => {
     `
 }
 
+// generate engineer and intern html
 const generateEmployees = employeesArray => {
 
     // const engineer = employeesArray.filter(employee => employee.role === 'engineer');
@@ -74,7 +77,7 @@ const generateEmployees = employeesArray => {
     `
 };
 
-// generate page html
+// generate overall page html
 module.exports = templateData => {
 
     // console.log(templateData);

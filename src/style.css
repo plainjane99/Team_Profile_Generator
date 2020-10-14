@@ -1,4 +1,3 @@
-/* General styling */
 :root {
     --header-color: #1A237E;
     --text-color: #FFCA28;
@@ -63,8 +62,8 @@ main {
 }
 
 .intern {
-    background-color: #2874A6;
-    color: black;
+    background-color: #21618C;
+    color: white;
 }
 
 footer {
