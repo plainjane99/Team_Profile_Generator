@@ -55,7 +55,7 @@ const phoneQuestion =
 {
     type: 'input',
     name: 'phone',
-    message: "Please enter office phone number.",
+    message: "Please enter employee's office phone number.",
     validate: phoneInput => {
         if (phoneInput) {
             return true;
@@ -170,7 +170,7 @@ const promptTeam = teamData => {
         .prompt([
             {
                 type: 'list',
-                message: 'Which would you like to add?',
+                message: 'Which type of employee would you like to add?',
                 name: 'employeeType',
                 choices: ['Engineer', 'Intern', 'None']
             }
