@@ -52,6 +52,25 @@ const generateEmployees = employeesArray => {
             .join('')
         }
 
+        ${employeesArray
+            .filter(employee => employee.role === 'intern')
+            .map(({ fullname, id, email, school, role }) => {
+                return `
+                    <div class="card card-wrapper">
+                        <div class="card-divider card-header intern">
+                            <h4>${fullname}</h4>
+                            <h5>${role}</h5>
+                        </div>
+                        <div class="card-section">
+                            <h6>Employee ID: ${id}</h6>
+                            <h6>Email: <a href="mailto:${email}">${email}</a></h6>
+                            <h6>School: ${school}</h6>
+                        </div>
+                    </div>
+                `
+            })
+            .join('')
+        }
     `
 };
 

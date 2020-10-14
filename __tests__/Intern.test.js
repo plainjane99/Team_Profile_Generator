@@ -19,5 +19,5 @@ test("gets name of intern's school", () => {
 test("gets intern's role", () => {
     const intern = new Intern('Jane Hsu', 12345, "jane@gmail.com", "UofW");
 
-    expect(intern.getRole()).toHaveProperty('role');
+    expect(intern.getRole()).toEqual(expect.any(String));
 })

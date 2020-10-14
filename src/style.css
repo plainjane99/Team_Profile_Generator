@@ -33,6 +33,7 @@ main {
     border-width: 2px;
     margin-bottom: 0;
     max-width: 350px;
+    width: 350px;
     margin: 10px;
 }
 
@@ -58,6 +59,11 @@ main {
 
 .engineer {
     background-color: #d4af37;
+    color: black;
+}
+
+.intern {
+    background-color: #2874A6;
     color: black;
 }
 

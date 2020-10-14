@@ -2,6 +2,7 @@
 const inquirer = require('inquirer'); // access the inquirer module //
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
+const Intern = require('./lib/Intern.js');
 // assign the html template export to the variable "generatePage"
 const generatePage = require('./src/page-template.js');
 // ============================= imports end here ============================== //
@@ -49,6 +50,7 @@ const questions = [
     },
 ];
 
+// question specifically for manager
 const phoneQuestion = 
 {
     type: 'input',
@@ -64,6 +66,7 @@ const phoneQuestion =
     }
 };
 
+// question specifically for engineer
 const gitHubQuestion = 
 {
     type: 'input',
@@ -79,14 +82,31 @@ const gitHubQuestion =
     }
 };
 
+// question specifically for intern
+const schoolQuestion = 
+{
+    type: 'input',
+    name: 'school',
+    message: "Please enter intern's school.",
+    validate: schoolInput => {
+        if (schoolInput) {
+            return true;
+        } else {
+            console.log("Please enter a school name.");
+            return false;
+        }
+    }
+};
+
 const managerQuestions = [...questions, phoneQuestion];
 const engineerQuestions = [...questions, gitHubQuestion];
+const internQuestions = [...questions, schoolQuestion];
 
 // function that starts the application
 // prompts the user for manager data
 const promptUser = () => {
 
-    console.log("Welcome to Team Profile Generator. Please start by entering manager information.");
+    console.log("Welcome to Team Profile Generator! Please start by entering manager information.");
 
     return inquirer.prompt(managerQuestions)
 
@@ -119,6 +139,22 @@ const promptEngineer = (teamData) => {
     ;
 };
 
+// function that prompts for intern data
+const promptIntern = (teamData) => {
+
+    // prompts for input then adds it to the teamData object
+    return inquirer.prompt(internQuestions)
+        .then(internData => {
+            // constructs new instance of intern
+            const intern = new Intern(internData.fullname, internData.id, internData.email, internData.school);
+            // adds the intern role to the object
+            intern.role = intern.getRole();
+
+            teamData.employees.push(intern);
+            return promptTeam(teamData);
+        })
+    ;
+};
 
 // function that prompts for team member data
 const promptTeam = teamData => {
