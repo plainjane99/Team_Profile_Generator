@@ -5,6 +5,8 @@ const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 // assign the html template export to the variable "generatePage"
 const generatePage = require('./src/page-template.js');
+// imports functions from generate-site.js
+const { writeFile, copyFile } = require('./utils/generate-site.js');
 // ============================= imports end here ============================== //
 
 // array of questions that are common to all employees
@@ -118,7 +120,6 @@ const promptUser = () => {
             return teamManager;
 
         })
-    
     ;
 };
 
@@ -187,11 +188,25 @@ const promptTeam = teamData => {
             else {
                 console.log(choiceData);
                 console.log(teamData);
-                console.log("Team Profile is being generated.");
-                // return generatePage(teamData); // this seems to work but i don't know if it generated the page correctly
-                console.log(generatePage(teamData));
+                // console.log("Team Profile is being generated.");
+                return generatePage(teamData); // this seems to work but i don't know if it generated the page correctly
+                // console.log(generatePage(teamData));
+                // return teamData;
             }
         })
+        // .then(teamData => {
+        //     return generatePage(teamData);
+        // })
+        .then(pageHTML => {
+            return writeFile(pageHTML);
+        })
+        .then(writeFileResponse => {
+            // console.log(writeFileResponse);
+            return copyFile(writeFileResponse);
+        })  
+        .catch(err => {
+            console.log(err);
+        })      
     ;
 };
 
@@ -203,14 +218,17 @@ promptUser()
     .then(promptTeam)
     // pass team member data into generatePage function and return html code
     // .then(teamData => {
-    //     const printHMTL = generatePage(teamData);
-    //     console.log(printHMTL);
+    //     return generatePage(teamData);
+        // console.log(teamData);
     // })
     // pass html code to writeFile
     // .then(pageHTML => {
-    //     return msWriteProfilerMark(pageHTML);
+    //     return writeFile(pageHTML);
     // })
-
+    // .then(writeFileResponse => {
+    //     console.log(writeFileResponse);
+    //     return copyFile();
+    // })
     // .catch(err => {
     //     console.log(err);
     // })
