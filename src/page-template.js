@@ -24,16 +24,6 @@ const generateManager = (managerData) => {
 // generate engineer and intern html
 const generateEmployees = employeesArray => {
 
-    // const engineer = employeesArray.filter(employee => employee.role === 'engineer');
-    // console.log(engineer);
-    // const eachEngineer = engineer.map(({ fullname, id, email, gitHub, role }) => {
-    //     console.log(fullname);
-    //     console.log(id);
-    //     console.log(email);
-    //     console.log(gitHub);
-    //     console.log(role);
-    // });
-
     return `
         <!--Row 2 will be Engineer/Intern Row-->
         <div class="cell row-wrapper employees">
@@ -83,10 +73,7 @@ const generateEmployees = employeesArray => {
 // generate overall page html
 module.exports = templateData => {
 
-    // console.log(templateData);
     const { employees, ...managerInfo } = templateData;
-    // console.log(employees);
-    // console.log(managerInfo);
 
     return `
         <!DOCTYPE html>

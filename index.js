@@ -159,14 +159,11 @@ const promptIntern = (teamData) => {
 
 // function that prompts for team member data
 const promptTeam = teamData => {
-    // console.log(teamData);
 
     // add a new array to store employees at first creation
     if (!teamData.employees) {
         teamData.employees = [];
     }
-    // console.log(teamData);
-
     return inquirer
         .prompt([
             {
@@ -186,22 +183,13 @@ const promptTeam = teamData => {
                 promptIntern(teamData);
             }
             else {
-                console.log(choiceData);
-                console.log(teamData);
-                // console.log("Team Profile is being generated.");
-                return generatePage(teamData); // this seems to work but i don't know if it generated the page correctly
-                // console.log(generatePage(teamData));
-                // return teamData;
+                return generatePage(teamData); 
             }
         })
-        // .then(teamData => {
-        //     return generatePage(teamData);
-        // })
         .then(pageHTML => {
             return writeFile(pageHTML);
         })
         .then(writeFileResponse => {
-            // console.log(writeFileResponse);
             return copyFile(writeFileResponse);
         })  
         .catch(err => {
@@ -213,23 +201,5 @@ const promptTeam = teamData => {
 // function to start the application
 // promptUser outputs an object
 promptUser()
-    // recursively call promptTeam for as many team members as the user wants to add
-    // each team member will be pushed into a team member array in a data object
     .then(promptTeam)
-    // pass team member data into generatePage function and return html code
-    // .then(teamData => {
-    //     return generatePage(teamData);
-        // console.log(teamData);
-    // })
-    // pass html code to writeFile
-    // .then(pageHTML => {
-    //     return writeFile(pageHTML);
-    // })
-    // .then(writeFileResponse => {
-    //     console.log(writeFileResponse);
-    //     return copyFile();
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    // })
 ;
