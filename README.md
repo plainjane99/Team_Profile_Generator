@@ -10,7 +10,7 @@
 * [Questions](#questions)
 
 ## Description <a name="description"></a>
-This application receives user input through the command line to generate a team profile webpage.  The webpage displays information of the team's employees, including employee name, employee role, employee ID, and email address.  The Team Manager is displayed at the top of the page and additionally includes the manager's office number.  Employees are displayed below the team manager.  Engineers on the team additionally have their GitHub username displayed.  Interns on the team additionally have their School name displayed. 
+This Javascript application is a Team Profile Generator that allows a user to input team information through the command line to generate a team profile webpage.  The webpage displays information for the team's employees, including employee name, employee role, employee ID, and email address.  The Team Manager is displayed at the top of the page and additionally includes the manager's office number.  Employees are displayed below the team manager.  Engineers on the team additionally have their GitHub username displayed.  Interns on the team additionally have their School name displayed. The intent of this Challenge was to build a Node.js command-line application, utilize object-oriented programming, as well as apply the Jest framework for testing.  No starter code was provided for this Challenge.
 
 ## Installation <a name="installation"></a>
 To install this application, please do the following: 
@@ -37,8 +37,8 @@ Once all input has been provided, the application will generate an index.html an
 
 ![Team Profile Webpage Example](./assets/images/Team_Profile_Webpage_Example.png)
 
-For a video walkthrough of the installation and usage procedures, please go to the following link:
-https://drive.google.com/file/d/1mxueZR9qDYzQRES6-Hchr3lcx7u04o_A/view
+For a video walkthrough of the jest tests and usage procedures, please go to the following link:
+https://drive.google.com/file/d/1czfL9mc3s2DOZpkpsAnhHjhKe0cONT37/view?usp=sharing
 
 ## Contributing <a name="contributing"></a>
 Contributions are welcome.  Please contact me regarding improvements you would like to make.
