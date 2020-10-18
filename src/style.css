@@ -15,12 +15,13 @@ header h1 {
 }
 
 body {
-    height: 100vh;
+    height: 100%;
 }
 
 main {
     background-color: black;
     padding: 20px 10px 20px 10px;
+    height: 100%;
 }
 
 .row-wrapper {
@@ -68,17 +69,4 @@ main {
 .intern {
     background-color: #21618C;
     color: white;
-}
-
-footer {
-    background-color: var(--header-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    position: fixed;
-}
-
-footer h6 {
-    margin: 10px;
 }

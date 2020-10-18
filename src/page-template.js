@@ -46,7 +46,6 @@ const generateEmployees = employeesArray => {
                 })
                 .join('')
             }
-
             ${employeesArray
                 .filter(employee => employee.role === 'Intern')
                 .map(({ fullname, id, email, school, role }) => {
@@ -101,11 +100,7 @@ module.exports = templateData => {
                         ${generateEmployees(employees)}
                     </div>
                 </main>
-        
-                <footer>
-                    <h6>&copy;2020 by Team Profile Generator</h6>
-                </footer>
-                
+                        
             </body>
         </html>        
     `
